@@ -1,13 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
-import {promise} from 'selenium-webdriver';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   genders = ['male', 'female'];
   signupForm: FormGroup;
   forbiddenNames = ['Max', 'Suzan'];
@@ -39,16 +38,16 @@ export class AppComponent implements OnInit{
       'hobbies': []
     });*/
 
-    this.signupForm.patchValue({
+/*    this.signupForm.patchValue({
       'userData': {
         'username': 'Mr. Leonardo'
       }
-    });
+    });*/
   }
 
   onSubmit() {
     console.log(this.signupForm);
-    this.signupForm.reset();
+    /*this.signupForm.reset();*/
   }
 
   onAddHobby() {
@@ -64,7 +63,7 @@ export class AppComponent implements OnInit{
   }
 
   deniedEmails(control: FormControl) {
-    const promise = new Promise((resolve, reject) => setTimeout(
+    return new Promise((resolve, reject) => setTimeout(
       () => {
         if (control.value === 'l@grinstein.com.br') {
           resolve({'deniedEmail': true});
@@ -73,7 +72,6 @@ export class AppComponent implements OnInit{
         }
       }
       , 3000));
-    return promise;
   }
 
 
